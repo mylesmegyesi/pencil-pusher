@@ -1,10 +1,10 @@
 # -*- encoding: utf-8 -*-
 
 Gem::Specification.new do |gem|
-  gem.name          = "pencil_pusher"
+  gem.name          = 'pencil_pusher'
   gem.version       = '0.0.1'
-  gem.authors       = ["Myles Megyesi"]
-  gem.email         = ["myles.megyesi@gmail.com"]
+  gem.authors       = ['Steve Kim']
+  gem.email         = ['skim.la@gmail.com']
   gem.description   = 'Form builder and validator'
   gem.summary       = 'Form builder and validator'
 
