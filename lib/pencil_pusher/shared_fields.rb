@@ -10,6 +10,5 @@ module PencilPusher
                        only_integer: true,
                        message: invalid_message}
     end
-
   end
 end

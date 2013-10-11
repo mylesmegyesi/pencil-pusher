@@ -5,8 +5,8 @@ module PencilPusher
         @model     = model
         @attribute = attribute
 
-        if value.nil?
-          add_error
+        if blank?(value)
+          append_blank_message
         else
           coerce_date(value)
         end
@@ -16,14 +16,26 @@ module PencilPusher
 
       attr_reader :model, :attribute
 
+      def messages
+        @messages ||= options.fetch(:messages)
+      end
+
       def coerce_date(value)
         Date.strptime(value, options.fetch(:format))
       rescue ArgumentError
-        add_error
+        append_invalid_message
       end
 
-      def add_error
-        model.errors[attribute] << options.fetch(:message)
+      def blank?(value)
+        value.nil? || value.strip == ''
+      end
+
+      def append_blank_message
+        model.errors[attribute] << messages.fetch(:blank)
+      end
+
+      def append_invalid_message
+        model.errors[attribute] << messages.fetch(:invalid)
       end
     end
   end
