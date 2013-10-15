@@ -1,11 +1,11 @@
 require 'pencil_pusher/virtus/coercer/date_time'
 
 describe PencilPusher::Virtus::Coercer::DateTime do
-  context 'with format option' do
+  context 'with date format option' do
     class TestDateTime
       include Virtus.model
 
-      attribute :start_date, PencilPusher::Virtus::Coercer::DateTime, format: '%Y-%d-%m'
+      attribute :start_date, PencilPusher::Virtus::Coercer::DateTime, format: '%Y-%d-%m %H:%M'
     end
 
     def model(date=nil)
@@ -16,7 +16,7 @@ describe PencilPusher::Virtus::Coercer::DateTime do
       date = Date.today
       test_date_time = model(date)
       start_date = test_date_time.start_date
-      start_date.should == date.strftime('%Y-%d-%m')
+      start_date.should == date.strftime('%Y-%d-%m %H:%M')
     end
 
     it 'does not coerce a string' do
