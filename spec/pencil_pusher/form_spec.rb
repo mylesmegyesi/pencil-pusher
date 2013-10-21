@@ -30,6 +30,6 @@ describe PencilPusher::Form do
   end
 
   it 'returns the attribute names' do
-    TestForm.new(test: 'here').attribute_names.should == [:test, :another_test]
+    TestForm.attribute_names.should == [:test, :another_test]
   end
 end

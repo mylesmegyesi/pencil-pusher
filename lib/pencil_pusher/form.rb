@@ -9,6 +9,10 @@ module PencilPusher
 
     attr_reader :data
 
+    def self.attribute_names
+      attribute_set.to_a.map(&:name)
+    end
+
     def initialize(data)
       super(data)
       if data.nil?
@@ -45,10 +49,6 @@ module PencilPusher
 
     def recognized_data
       data.slice(*attributes.keys)
-    end
-
-    def attribute_names
-      attribute_set.to_a.map(&:name)
     end
 
     private :attributes
