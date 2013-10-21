@@ -4,6 +4,8 @@ describe PencilPusher::Form do
 
   class TestForm < PencilPusher::Form
     attribute :test, String
+    attribute :another_test, Integer
+
     validates :test, presence: true
   end
 
@@ -27,4 +29,7 @@ describe PencilPusher::Form do
     TestForm.new(test: 'here', unknown: 'here').recognized_data.should == {test: 'here'}
   end
 
+  it 'returns the attribute names' do
+    TestForm.new(test: 'here').attribute_names.should == [:test, :another_test]
+  end
 end

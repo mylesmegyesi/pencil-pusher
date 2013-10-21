@@ -47,6 +47,10 @@ module PencilPusher
       data.slice(*attributes.keys)
     end
 
+    def attribute_names
+      attribute_set.to_a.map(&:name)
+    end
+
     private :attributes
     private
 
