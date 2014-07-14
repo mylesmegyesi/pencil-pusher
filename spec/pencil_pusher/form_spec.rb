@@ -1,6 +1,7 @@
 require 'pencil_pusher/form'
 
 describe PencilPusher::Form do
+  I18n.enforce_available_locales = false
 
   class TestForm < PencilPusher::Form
     attribute :test, String
