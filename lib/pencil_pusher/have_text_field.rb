@@ -25,6 +25,9 @@ module PencilPusher
       "expected #{actual} to not have text field #{field_name} but did"
     end
 
+    alias failure_message               failure_message_for_should 
+    alias failure_message_when_negated  failure_message_for_should_not
+
     def description
       "have text field #{field_name}"
     end
