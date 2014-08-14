@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |gem|
   gem.name          = 'pencil_pusher'
-  gem.version       = '0.0.10'
+  gem.version       = '0.0.11'
   gem.authors       = ['Myles Megyesi', 'Steve Kim']
   gem.email         = ['myles.megyesi@gmail.com', 'skim.la@gmail.com']
   gem.description   = 'Form builder and validator'
