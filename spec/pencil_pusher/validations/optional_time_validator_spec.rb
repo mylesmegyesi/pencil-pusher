@@ -24,26 +24,26 @@ describe PencilPusher::Validations::OptionalTimeValidator do
       end
 
       it 'is valid if the time can be coerced to a Time object' do
-        form(time: '23:56').should be_valid
+        expect(form(time: '23:56')).to be_valid
       end
 
       context 'blank validation' do
         it 'is valid if the time is an empty string' do
-          form(time: ' ').should_not have_errors(:time)
+          expect(form(time: ' ')).not_to have_errors(:time)
         end
 
         it 'is valid if the time is nil' do
-          form(time: nil).should_not have_errors(:time)
+          expect(form(time: nil)).not_to have_errors(:time)
         end
       end
 
       context 'invalid validation' do
         it 'is not valid if the time cannot be coerced to a Time object' do
-          form(time: 'now').should have_errors(:time, [ValidTimeForm::INVALID])
+          expect(form(time: 'now')).to have_errors(:time, [ValidTimeForm::INVALID])
         end
 
         it 'is not valid if the time is in improper format' do
-          form(time: '59:12').should have_errors(:time, [ValidTimeForm::INVALID])
+          expect(form(time: '59:12')).to have_errors(:time, [ValidTimeForm::INVALID])
         end
       end
     end

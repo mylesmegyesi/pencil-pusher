@@ -11,26 +11,26 @@ describe PencilPusher::Form do
   end
 
   it 'is bound if it is given data' do
-    TestForm.new({}).should be_bound
+    expect(TestForm.new({}).bound?).to be_truthy
   end
 
   it 'is not bound if it is given no data' do
-    TestForm.new(nil).should_not be_bound
+    expect(TestForm.new(nil).bound?).to be_falsey
   end
 
   it 'bound forms run validations' do
-    TestForm.new({}).valid?.should be_false
+    expect(TestForm.new({}).valid?).to be_falsey
   end
 
   it 'unbound forms are always valid' do
-    TestForm.new(nil).valid?.should be_true
+    expect(TestForm.new(nil).valid?).to be_truthy
   end
 
   it 'returns recognized data' do
-    TestForm.new(test: 'here', unknown: 'here').recognized_data.should == {test: 'here'}
+    expect(TestForm.new(test: 'here', unknown: 'here').recognized_data).to eq({test: 'here'})
   end
 
   it 'returns the attribute names' do
-    TestForm.attribute_names.should == [:test, :another_test]
+    expect(TestForm.attribute_names).to eq([:test, :another_test])
   end
 end

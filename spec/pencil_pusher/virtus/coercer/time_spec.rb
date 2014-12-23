@@ -16,19 +16,19 @@ describe PencilPusher::Virtus::Coercer::Time do
       time = Time.now.utc
       test_time = model(time)
       start_time = test_time.start_time
-      start_time.should == time.strftime('%H:%M')
+      expect(start_time).to eq(time.strftime('%H:%M'))
     end
 
     it 'does not coerce a string' do
       time_string = 'time string'
       test_time = model(time_string)
       start_time = test_time.start_time
-      start_time.should == time_string
+      expect(start_time).to eq(time_string)
     end
 
     it 'handles nil value' do
       test_time = model
-      test_time.start_time.should be_nil
+      expect(test_time.start_time).to be_nil
     end
   end
 

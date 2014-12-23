@@ -1,6 +1,7 @@
 module PencilPusher
   class HaveRequiredChoiceField
     include PencilPusher::Matchers
+    include RSpec::Matchers
 
     def initialize(field_name, valid_values, blank_error, invalid_error)
       @field_name = field_name
@@ -11,11 +12,11 @@ module PencilPusher
 
     def matches?(form)
       begin
-        form.should have_required_field(field_name, blank_error)
+        expect(form).to have_required_field(field_name, blank_error)
         builder = FormBuilder.builder(form)
-        builder.call(field_name => 'invalid_value').should have_errors(field_name, [invalid_error])
+        expect(builder.call(field_name => 'invalid_value')).to have_errors(field_name, [invalid_error])
         valid_values.each do |valid_value|
-          builder.call(field_name => valid_value.to_s).should_not have_errors(field_name)
+          expect(builder.call(field_name => valid_value.to_s)).not_to have_errors(field_name)
         end
       rescue => e
         @error = e.message

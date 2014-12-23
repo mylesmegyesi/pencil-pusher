@@ -28,26 +28,26 @@ describe PencilPusher::Validations::DateTimeValidator do
       end
 
       it 'is valid if the date can be coerced to a Date object' do
-        form(date: '2013-31-12').should be_valid
+        expect(form(date: '2013-31-12')).to be_valid
       end
 
       context 'blank validation' do
         it 'is not valid if the date is an empty string' do
-          form(date: ' ').should have_errors(:date, [ValidDateForm::BLANK])
+          expect(form(date: ' ')).to have_errors(:date, [ValidDateForm::BLANK])
         end
 
         it 'is not valid if the date is nil' do
-          form(date: nil).should have_errors(:date, [ValidDateForm::BLANK])
+          expect(form(date: nil)).to have_errors(:date, [ValidDateForm::BLANK])
         end
       end
 
       context 'invalid validation' do
         it 'is not valid if the date cannot be coerced to a Date object' do
-          form(date: 'now').should have_errors(:date, [ValidDateForm::INVALID])
+          expect(form(date: 'now')).to have_errors(:date, [ValidDateForm::INVALID])
         end
 
         it 'is not valid if the date is in improper format' do
-          form(date: '12-31-2013').should have_errors(:date, [ValidDateForm::INVALID])
+          expect(form(date: '12-31-2013')).to have_errors(:date, [ValidDateForm::INVALID])
         end
       end
     end

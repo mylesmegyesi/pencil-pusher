@@ -16,19 +16,19 @@ describe PencilPusher::Virtus::Coercer::DateTime do
       date = Date.today
       test_date_time = model(date)
       start_date = test_date_time.start_date
-      start_date.should == date.strftime('%Y-%d-%m %H:%M')
+      expect(start_date).to eq(date.strftime('%Y-%d-%m %H:%M'))
     end
 
     it 'does not coerce a string' do
       date_string = 'date string'
       test_date_time = model(date_string)
       start_date = test_date_time.start_date
-      start_date.should == date_string
+      expect(start_date).to eq(date_string)
     end
 
     it 'handles nil value' do
       test_date_time = model
-      test_date_time.start_date.should be_nil
+      expect(test_date_time.start_date).to be_nil
     end
   end
 

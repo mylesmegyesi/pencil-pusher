@@ -1,6 +1,7 @@
 module PencilPusher
   class HaveRequiredIntField
     include PencilPusher::Matchers
+    include RSpec::Matchers
 
     def initialize(field_name, valid_value, blank_error, invalid_error)
       @field_name = field_name
@@ -11,8 +12,8 @@ module PencilPusher
 
     def matches?(builder)
       begin
-        builder.should have_required_field(field_name, blank_error)
-        builder.should have_int_field(field_name, valid_value, invalid_error)
+        expect(builder).to have_required_field(field_name, blank_error)
+        expect(builder).to have_int_field(field_name, valid_value, invalid_error)
       rescue => e
         @error = e.message
         raise e
