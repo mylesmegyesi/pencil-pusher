@@ -1,6 +1,7 @@
 module PencilPusher
   class HaveIntField
     include PencilPusher::Matchers
+    include RSpec::Matchers
 
     def initialize(field_name, valid_value, error)
       @field_name = field_name
@@ -10,8 +11,8 @@ module PencilPusher
 
     def matches?(builder)
       begin
-        FormBuilder.form(builder, {field_name => 'here'}).should have_errors(field_name, [error])
-        FormBuilder.form(builder, field_name => valid_value).should_not have_errors(field_name)
+        expect(FormBuilder.form(builder, {field_name => 'here'})).to have_errors(field_name, [error])
+        expect(FormBuilder.form(builder, field_name => valid_value)).not_to have_errors(field_name)
       rescue => e
         @error = e.message
         raise e

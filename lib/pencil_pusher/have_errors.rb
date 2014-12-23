@@ -27,7 +27,7 @@ module PencilPusher
       "expected no errors for field #{field_name} but found #{actual.error_messages[field_name]}"
     end
 
-    alias failure_message               failure_message_for_should 
+    alias failure_message               failure_message_for_should
     alias failure_message_when_negated  failure_message_for_should_not
 
     def description

@@ -51,12 +51,12 @@ module PencilPusher
       data.slice(*attributes.keys)
     end
 
-    private :attributes
-    private
-
     def bound?
       @bound
     end
+
+    private :attributes
+    private
 
     def validated?
       @validated

@@ -24,19 +24,19 @@ describe PencilPusher::DateTimeFields do
     end
 
     it 'requires field' do
-      form({}).should have_errors(:start_date, ['Blank'])
+      expect(form({})).to have_errors(:start_date, ['Blank'])
     end
 
     it 'validates date value can be coerced to Date' do
-      form(start_date: 'now').should have_errors(:start_date, ['Invalid'])
+      expect(form(start_date: 'now')).to have_errors(:start_date, ['Invalid'])
     end
 
     it 'validates date format' do
-      form(start_date: '2013/01/01').should have_errors(:start_date, ['Invalid'])
+      expect(form(start_date: '2013/01/01')).to have_errors(:start_date, ['Invalid'])
     end
 
     it 'is valid' do
-      form(start_date: '31-01-2013').should_not have_errors(:start_date)
+      expect(form(start_date: '31-01-2013')).not_to have_errors(:start_date)
     end
   end
 
@@ -59,19 +59,19 @@ describe PencilPusher::DateTimeFields do
     end
 
     it 'requires field' do
-      form({}).should have_errors(:start_time, ['Blank'])
+      expect(form({})).to have_errors(:start_time, ['Blank'])
     end
 
     it 'validates time value can be coerced to Time' do
-      form(start_time: 'now').should have_errors(:start_time, ['Invalid'])
+      expect(form(start_time: 'now')).to have_errors(:start_time, ['Invalid'])
     end
 
     it 'validates time format' do
-      form(start_time: '59:12').should have_errors(:start_time, ['Invalid'])
+      expect(form(start_time: '59:12')).to have_errors(:start_time, ['Invalid'])
     end
 
     it 'is valid' do
-      form(start_time: '23:59').should_not have_errors(:start_time)
+      expect(form(start_time: '23:59')).not_to have_errors(:start_time)
     end
   end
 end

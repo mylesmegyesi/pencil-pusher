@@ -1,6 +1,7 @@
 module PencilPusher
   class HaveRequiredTextField
     include PencilPusher::Matchers
+    include RSpec::Matchers
 
     def initialize(field_name, valid_value, error)
       @field_name = field_name
@@ -10,8 +11,8 @@ module PencilPusher
 
     def matches?(builder)
       begin
-        builder.should have_required_field(field_name, error)
-        builder.should have_text_field(field_name, valid_value)
+        expect(builder).to have_required_field(field_name, error)
+        expect(builder).to have_text_field(field_name, valid_value)
       rescue => e
         @error = e.message
         raise e

@@ -1,3 +1,5 @@
+require 'rspec/expectations'
+
 module PencilPusher
   module Matchers
 
