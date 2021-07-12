@@ -33,4 +33,28 @@ describe PencilPusher::Form do
   it 'returns the attribute names' do
     expect(TestForm.attribute_names).to eq([:test, :another_test])
   end
+
+  describe '#error_messages' do
+    it 'returns error messages' do
+      form = TestForm.new({})
+      form.valid?
+
+      expect(form.error_messages).to eq(test: ["can't be blank"])
+    end
+
+    it 'allows merging error messages when errors already present' do
+      form = TestForm.new({})
+      form.valid?
+      form.error_messages.merge!(foo: ['error'])
+
+      expect(form.error_messages).to eq(test: ["can't be blank"], foo: ['error'])
+    end
+
+    it 'allows merging error messages when no errors present' do
+      form = TestForm.new({})
+      form.error_messages.merge!(foo: ['error'])
+
+      expect(form.error_messages).to eq(foo: ['error'])
+    end
+  end
 end

@@ -31,11 +31,11 @@ module PencilPusher
       end
 
       def append_blank_message
-        model.errors[attribute] << messages.fetch(:blank)
+        model.errors.add(attribute, messages.fetch(:blank))
       end
 
       def append_invalid_message
-        model.errors[attribute] << messages.fetch(:invalid)
+        model.errors.add(attribute, messages.fetch(:invalid))
       end
     end
   end

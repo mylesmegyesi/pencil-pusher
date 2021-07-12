@@ -28,7 +28,7 @@ module PencilPusher
       end
 
       def append_invalid_message
-        model.errors[attribute] << messages.fetch(:invalid)
+        model.errors.add(attribute, messages.fetch(:invalid))
       end
     end
   end

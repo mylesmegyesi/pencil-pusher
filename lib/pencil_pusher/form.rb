@@ -40,7 +40,7 @@ module PencilPusher
     end
 
     def error_messages
-      @_error_messages ||= errors.messages
+      @_error_messages ||= errors.messages.dup
     end
 
     def cleaned_data

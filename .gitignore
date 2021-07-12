@@ -15,3 +15,4 @@ test/version_tmp
 tmp
 _yardoc
 .yardoc
+.ruby-version
